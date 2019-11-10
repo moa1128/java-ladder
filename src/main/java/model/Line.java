@@ -1,11 +1,12 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Line {
     private static final int START_INDEX = 0;
-    private ArrayList<Boolean> points = new ArrayList<>();
+    private List<Boolean> points = new ArrayList<>();
 
     public Line(int countOfPerson) {
         points.add(false);
@@ -31,7 +32,11 @@ public class Line {
         }
     }
 
-    public ArrayList<Boolean> getLine() {
+    public String makeBridge(int index) {
+        return points.get(index) ? "-" : " ";
+    }
+
+    public List<Boolean> getLine() {
         return points;
     }
 }

@@ -1,32 +1,31 @@
 package view;
 
 import model.Line;
-import model.Lines;
-
-import java.util.List;
+import model.Ladder;
+import model.Names;
 
 public class OutputView {
-    public void showResult(int height, int maxNameLength, List<String> names, Lines lines) {
+    public static void showResult(int height, Names names, Ladder ladder) {
         System.out.println("실행결과\n");
-        printNames(maxNameLength, names);
-        printAllLine(height, maxNameLength, names.size(), lines);
+        printNames(names);
+        printAllLine(height, names.getMaxNameLength(), names.getNamesSize(), ladder);
     }
 
-    private void printNames(int maxNameLength, List<String> names) {
-        for (int i = 0; i < names.size(); i++) {
-            setTheInterval(maxNameLength - names.get(i).length());
-            System.out.print(names.get(i) + " ");
+    private static void printNames(Names names) {
+        for (int i = 0; i < names.getNamesSize(); i++) {
+            setTheInterval(names.getMaxNameLength() - names.getName(i).length(), " ");
+            System.out.print(names.getName(i) + " ");
         }
         System.out.println();
     }
 
-    private void printAllLine(int height, int maxNameLength, int countOfPerson, Lines lines) {
+    private static void printAllLine(int height, int maxNameLength, int countOfPerson, Ladder ladder) {
         for (int i = 0; i < height; i++) {
-            printLine(maxNameLength, countOfPerson, lines.getLine(i));
+            printLine(maxNameLength, countOfPerson, ladder.getLine(i));
         }
     }
 
-    private void printLine(int maxNameLength, int countOfPerson, Line line) {
+    private static void printLine(int maxNameLength, int countOfPerson, Line line) {
         for (int i = 0; i < countOfPerson; i++) {
             drawHorizontalLine(i, maxNameLength, line);
             drawVerticalLine();
@@ -34,28 +33,17 @@ public class OutputView {
         System.out.println();
     }
 
-    private void drawVerticalLine() {
+    private static void drawVerticalLine() {
         System.out.print("|");
     }
 
-    private void drawHorizontalLine(int curIndex, int maxNameLength, Line line) {
-        //이것을 삼항 연산자로 했을 때는 오류가 나는 데 if-else문을 사용하지 않고 나타낼 수 있는 법을 모르겠습니다.
-        if (line.getLine().get(curIndex)) {
-            drawMaxNameLength(maxNameLength);
-        } else {
-            setTheInterval(maxNameLength);
-        }
+    private static void drawHorizontalLine(int curIndex, int maxNameLength, Line line) {
+        setTheInterval(maxNameLength, line.makeBridge(curIndex));
     }
 
-    private void drawMaxNameLength(int maxNameLength) {
-        for (int i = 0; i < maxNameLength; i++) {
-            System.out.print("-");
-        }
-    }
-
-    private void setTheInterval(int interval) {
+    private static void setTheInterval(int interval, String sign) {
         for (int i = 0; i < interval; i++) {
-            System.out.print(" ");
+            System.out.print(sign);
         }
     }
 }
