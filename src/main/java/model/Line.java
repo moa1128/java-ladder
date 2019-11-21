@@ -36,7 +36,7 @@ public class Line {
         return points.get(index) ? "-" : " ";
     }
 
-    public List<Boolean> getLine() {
-        return points;
+    public boolean getPoint(int index) {
+        return points.get(index);
     }
 }
