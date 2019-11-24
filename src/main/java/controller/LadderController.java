@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 import static view.InputView.*;
 import static view.OutputView.*;
 
+import java.util.stream.Collectors;
+
 
 public class LadderController {
 

@@ -12,7 +12,7 @@ public class Names {
     public int getMaxNameLength() {
         int maxLength = names.get(0).nameLength();
         for (int i = 1; i < names.size(); i++) {
-            maxLength = findMaxLength(maxLength, names.get(i).nameLength());
+            maxLength = findMaxLength(maxLength, i);
         }
         return maxLength;
     }
@@ -29,7 +29,6 @@ public class Names {
     public int findMaxLength(int maxLength, int curLength) {
         if (maxLength <= curLength) {
             maxLength = curLength;
-        }
         return maxLength;
     }
 
@@ -44,7 +43,7 @@ public class Names {
             throw new IllegalArgumentException("찾는 이름이 없습니다.");
         }
     }
-
+      
     public int getNamesSize() {
         return names.size();
     }

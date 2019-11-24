@@ -39,4 +39,8 @@ public class Line {
     public boolean getPoint(int index) {
         return points.get(index);
     }
+  
+    public List<Boolean> getLine() {
+        return points;
+    }
 }

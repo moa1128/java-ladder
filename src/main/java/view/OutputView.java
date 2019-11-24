@@ -24,7 +24,7 @@ public class OutputView {
         }
         System.out.println();
     }
-
+  
     private static void printResults(Result result, int maxNameLength) {
         for (int i = 0; i < result.getResultSize(); i++) {
             System.out.print(result.getResult(i));
@@ -60,7 +60,7 @@ public class OutputView {
             System.out.print(sign);
         }
     }
-
+  
     public static void showExecutionResult(String result) {
         System.out.println("실행 결과");
         System.out.println(result);
